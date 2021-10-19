@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
     });
 });
 
-app.get("/exercise?", (req, res) => {
+app.post("/api/workouts", (req, res) => {
   db.Workout.find({})
     .then(dbWorkout => {
       res.json(dbWorkout);
@@ -37,11 +37,10 @@ app.get("/exercise?", (req, res) => {
     });
 });
 
-app.get("/populated", (req, res) => {
-  db.Library.find({})
-    .populate("books")
-    .then(dbLibrary => {
-      res.json(dbLibrary);
+app.get("/exercise", (req, res) => {
+  db.Workout.find({})
+    .then(dbWorkout => {
+      res.json(dbWorkout);
     })
     .catch(err => {
       res.json(err);
