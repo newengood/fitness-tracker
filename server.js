@@ -17,20 +17,20 @@ app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitness-tracker-db");
 
-app.get("/exercise", (req, res) => {
-  db.Excercise.find({})
-    .then(dbBook => {
-      res.json(dbBook);
+app.get("/", (req, res) => {
+  db.Workout.find({})
+    .then(dbWorkout => {
+      res.json(dbWorkout);
     })
     .catch(err => {
       res.json(err);
     });
 });
 
-app.get("/library", (req, res) => {
-  db.Library.find({})
-    .then(dbLibrary => {
-      res.json(dbLibrary);
+app.get("/exercise?", (req, res) => {
+  db.Workout.find({})
+    .then(dbWorkout => {
+      res.json(dbWorkout);
     })
     .catch(err => {
       res.json(err);
