@@ -33,7 +33,7 @@ router.get("/api/workouts/range", async (req, res) => {
 // update existing workout with new exercise
 router.put("/api/workouts/:id", async (req, res) => {
     try {
-        const exercise = await db.Exercise.create(req.params.id);
+        const exercise = await db.Exercise.create(req.body);
         const workout = await db.Workout.findByIdAndUpdate(
             req.params.id,
             { $push: { exercises: exercise._id } },
