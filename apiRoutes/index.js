@@ -14,6 +14,13 @@ router.get("/api/workouts/range", async (req, res) => {
                 }
             },
             {
+                $addFields: {
+                    totalDuration: {
+                        $sum: "$exercises.duration"
+                    }
+                }
+            },
+            {
                 $limit: 7
             }
         ]);
@@ -59,7 +66,14 @@ router.get("/api/workouts", async (req, res) => {
                     foreignField: "_id",
                     as: "exercises"
                 }
-            }
+            },
+            {
+                $addFields: {
+                    totalDuration: {
+                        $sum: "$exercises.duration"
+                    }
+                }
+            },
         ]);
         res.json(workouts);
     } catch (error) {
