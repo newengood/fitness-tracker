@@ -17,7 +17,12 @@ app.use(express.static("public"));
 
 app.use(apiRoutes)
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitness-tracker-db", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitness-tracker-db",
+  {
+    useNewUrlParser: true,
+    useFindAndModify: false
+  }
+);
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public/index.html"))
