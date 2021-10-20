@@ -7,7 +7,7 @@ router.get("/api/workouts/range", async (req, res) => {
         const workouts = await db.Workout.aggregate([
             {
                 $lookup: {
-                    from: "fitness",
+                    from: "exercises",
                     localField: "exercises",
                     foreignField: "_id",
                     as: "exercises"
@@ -66,7 +66,7 @@ router.get("/api/workouts", async (req, res) => {
         const workouts = await db.Workout.aggregate([
             {
                 $lookup: {
-                    from: "fitness",
+                    from: "exercises",
                     localField: "exercises",
                     foreignField: "_id",
                     as: "exercises"
