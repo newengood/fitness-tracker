@@ -8,8 +8,8 @@ router.get("/api/workouts/range", async (req, res) => {
             {
                 $lookup: {
                     from: "fitness",
-                    localfield: "exercises",
-                    foreignfield: "_id",
+                    localField: "exercises",
+                    foreignField: "_id",
                     as: "exercises"
                 }
             },
@@ -55,8 +55,8 @@ router.get("/api/workouts", async (req, res) => {
             {
                 $lookup: {
                     from: "fitness",
-                    localfield: "exercises",
-                    foreignfield: "_id",
+                    localField: "exercises",
+                    foreignField: "_id",
                     as: "exercises"
                 }
             }
