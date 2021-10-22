@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+// create exercise collection
 const ExerciseSchema = new Schema({
   type: String,
   name: String,

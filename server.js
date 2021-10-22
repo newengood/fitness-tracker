@@ -17,6 +17,7 @@ app.use(express.static("public"));
 
 app.use(apiRoutes)
 
+// connect to mongodb database
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitness-tracker-db",
   {
     useNewUrlParser: true,
@@ -24,18 +25,20 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitness-tracker
   }
 );
 
+// home route
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public/index.html"))
 });
 
+// stats page route
 app.get("/stats", (req, res) => {
   res.sendFile(path.join(__dirname, "public/stats.html"))
 });
 
+// exercise page route
 app.get("/exercise", (req, res) => {
   res.sendFile(path.join(__dirname, "public/exercise.html"))
 });
-
 
 
 app.listen(PORT, () => {
