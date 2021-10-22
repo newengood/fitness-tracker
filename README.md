@@ -18,6 +18,8 @@
 
 ![usage](./assets/usage.png)
 
+[Deployment](https://radiant-inlet-63148.herokuapp.com/)
+
 ## License
   
 * MIT
